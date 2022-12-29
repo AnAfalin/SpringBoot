@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Orders</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<div class="container-sm ">
+    <nav class="nav">
+        <form th:action="@{/}">
+            <input type="submit" value="Стартовая страница" class="btn btn-sm btn-warning">
+        </form>
+    </nav>
+
+    <div class="content">
+
+        <h3 class="text-center m-3"><span th:text="${typeOrder}"></span> orders</h3>
+
+        <table class="table table-bordered table-group-divider table-sm">
+            <thead>
+            <tr class="table-info text-center">
+                <th scope="col">Number</th>
+                <th scope="col">Status order</th>
+                <th scope="col">Client id</th>
+                <th scope="col">Client name</th>
+                <th scope="col">Client email</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="order: ${orders}">
+                <td th:text="${order.id}">number</td>
+                <td th:text="${order.orderStatus}">status</td>
+                <td th:text="${order.client.id}">id</td>
+                <td th:text="${order.client.name}">name</td>
+                <td th:text="${order.client.email}">Email</td>
+                <td class="d-flex justify-content-center">
+                    <form th:action="@{/admin/orders/{orderId}/show(orderId=${order.id})}"
+                          th:method="get"
+                          class="m-2">
+                        <button class="btn btn-sm btn-info">show</button>
+                    </form>
+
+                    <th:block th:if="${isNewOrders} == true">
+                        <div class="d-flex justify-content-center">
+                            <form th:action="@{/admin/orders/{orderId}/accept(orderId=${order.id})}"
+                                  th:method="get"
+                                  class="m-2">
+                                <button class="btn btn-sm btn-success">accept</button>
+                            </form>
+                            <form th:action="@{/admin/orders/{orderId}/reject(orderId=${order.id})}"
+                                  th:method="get"
+                                  class="m-2">
+                                <button class="btn btn-sm btn-danger">reject</button>
+                            </form>
+                        </div>
+                    </th:block>
+
+                    <th:block th:if="${isAcceptedOrders} == true">
+                        <div class="d-flex justify-content-center">
+                            <form th:action="@{/admin/orders/{orderId}/finished(orderId=${order.id})}"
+                                  th:method="get"
+                                  class="m-2">
+                                <button class="btn btn-sm" style="background-color: #0d6efd">finish</button>
+                            </form>
+                        </div>
+                    </th:block>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

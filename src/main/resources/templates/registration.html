@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Registration new client</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+
+<body>
+<div class="container-sm col-8">
+    <nav class="nav">
+        <form th:action="@{/}">
+            <input type="submit" value="Стартовая страница" class="btn btn-sm btn-warning">
+        </form>
+    </nav>
+    <div class="content">
+
+        <h3 class="text-center m-3">Registration new client form</h3>
+
+        <form th:action="@{/clients/new-client}"
+              th:object="${client}"
+              th:method="post">
+
+            <div class="mb-3">
+                <label for="inputName"
+                       class="form-label">Name</label>
+                <input type="text"
+                       class="form-control"
+                       id="inputName"
+                       placeholder="Enter your name"
+                       th:field="*{name}">
+            </div>
+            <div class="mb-3">
+                <label for="inputEmail"
+                       class="form-label">Email</label>
+                <input class="form-control"
+                       id="inputEmail"
+                       placeholder="Enter your email"
+                       type="text"
+                       th:field="*{email}">
+            </div>
+
+            <div class="col-3 my-3 mx-auto">
+                <button class="btn btn-primary"
+                        th:type="submit">Registration
+                </button>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

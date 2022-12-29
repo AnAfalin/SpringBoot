@@ -1,0 +1,38 @@
+.nav {
+    border-radius: 15px 15px 0 0;
+    background-color: #001584;
+    padding: 10px 27px;
+}
+
+body {
+    background-color: rgba(76, 220, 255, 0.82);
+    padding: 20px 100px;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.content {
+    background-color: white;
+    border-radius: 0px 0px 15px 15px;
+    padding: 10px 50px;
+}
+.button_client {
+    width: 220px;
+    border: 2px solid black;
+}
+
+.button_order {
+    border: 2px solid;
+    width: 170px;
+}
+.button_order-blue {
+    border-color: #000093;
+}
+.button_order_red {
+    border-color: #f50000;
+}
+.button_order_green {
+    border-color: #038418;
+}
+.button_order_new {
+    border-color: #8f02b7;
+}
